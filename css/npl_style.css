@@ -1,0 +1,168 @@
+body {
+    background: rgb(24,23,30);
+    color: rgb(212,210,218);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Effetto vetro (glassmorphism) */
+.navbar.glass {
+    background:
+        linear-gradient(135deg, rgba(24,23,30,0.75) 0%, rgba(50,50,62,0.85) 50%, rgba(24,23,30,0.75) 100%),
+        rgba(24,23,30, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow:
+        0 0 10px 2px rgba(255, 255, 255, 0.2),
+        inset 0 0 15px 3px rgba(70, 70, 80, 0.6),
+        0 6px 24px rgba(0,0,0,0.5);
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+/* Linea luminosa sottile e sfumata sotto navbar */
+.navbar.glass::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    height: 4px;
+    background:
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.8) 0%,
+            rgba(212,210,218, 0.4) 50%,
+            rgba(255, 255, 255, 0.8) 100%);
+    border-radius: 3px;
+    filter: blur(4px);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    height: 160px;
+    padding: 0 3vw;
+    justify-content: space-between;
+    position: relative;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    width: 300px; /* larghezza fissa identica */
+    justify-content: flex-start; /* nav-left */
+}
+
+/* Override per nav-right */
+.nav-right {
+    justify-content: flex-end;
+}
+
+.logo {
+    margin: 0 auto;
+    flex-shrink: 0;
+    z-index: 10;
+    position: relative; /* Rimuove absolute */
+}
+
+.logo-img {
+    height: 140px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.15));
+}
+.nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+
+.nav-left {
+    justify-content: flex-start;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: rgb(212,210,218);
+    font-weight: 600;
+    font-size: 1.2em;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.nav-links a:hover,.nav-links a:focus {
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 8px rgb(212,210,218);
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+}
+.nav-links li a {
+    white-space: nowrap;
+}
+
+.nav-links a.active {
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    text-shadow: 0 0 10px rgb(212,210,218);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+
+
+.nav-links a {
+    text-decoration: none;
+    color: rgb(212,210,218);
+    font-weight: 600;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+main {
+    margin-top: 160px; /* spazio per il logo in navbar */
+    background-color: rgb(212,210,218);
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+.main-section {
+    margin: 20px auto;
+    padding: 36px;
+    max-width: 900px;
+    background: rgba(19,18,22,0.85);
+    border-radius: 14px;
+    box-shadow: 0 6px 32px rgba(0,0,0, 0.4);
+    font-size: 2em;
+    text-align: center;
+    letter-spacing: 2px;
+    color: rgb(212,210,218);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+@media screen and (max-width: 700px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+    }
+    .logo-img {
+        height: 80px;
+    }
+    .main-section {
+        font-size: 1.2em;
+        padding: 20px;
+    }
+}

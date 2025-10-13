@@ -1,0 +1,152 @@
+/* Colori: Bianco nebbia (sfondo principale), Nero (header), Viola Neon (accento) */
+:root {
+    --color-bianco-nebbia: #f0f0f0; /* SFONDO PRINCIPALE (Il tuo "grigio del main") */
+    --color-nero: #0a0a0a; /* SFONDO HEADER (e Testo MELKING) */
+    --color-testo-nav: #ffffff; /* Testo navigazione per effetto "bianco neon" su sfondo nero */
+    --color-viola-neon: #9611fe; /* Viola Neon */
+}
+
+/* Stile generale del corpo: Sfondo Bianco Nebbia, Testo Nero */
+body {
+    background-color: var(--color-bianco-nebbia); 
+    color: var(--color-nero); /* Il testo generale del body sarebbe nero se ci fosse */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    justify-content: flex-start; 
+}
+
+/* --- STILI HEADER (NAVBAR) --- */
+header {
+    width: 100%;
+    /* Sfondo Nero per l'Header */
+    background-color: var(--color-nero); 
+    padding: 10px 0;
+    
+    /* Simula l'effetto "Bianco Neon su tutto lo sfondo" con bordo e ombra esterna */
+    border-bottom: 2px solid var(--color-viola-neon);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), /* Bagliore bianco/nebbia */
+                0 5px 20px var(--color-viola-neon); /* Bagliore viola */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-segment {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+/* Stile per i link della navbar: Testo Bianco su sfondo Nero */
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-testo-nav); /* Bianco puro per effetto neon */
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1em;
+    padding: 5px;
+    
+    /* Ombre neon leggere sui link minori */
+    text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.7), /* Bagliore bianco */
+        0 0 10px rgba(150, 17, 254, 0.5); /* Bagliore viola */
+        
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--color-viola-neon);
+    text-shadow: 
+        0 0 8px var(--color-viola-neon),
+        0 0 15px rgba(150, 17, 254, 0.9);
+}
+
+/* Stile per la scritta MELKING (sostituto del logo) */
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.melking-title {
+    font-family: 'Major Mono Display', monospace; 
+    font-size: 3vw; 
+    color: var(--color-nero); /* Colore primario nero */
+    margin: 0 40px;
+    
+    /* Ombre viola neon PIÙ FORTI */
+    text-shadow: 
+        0 0 10px var(--color-viola-neon),
+        0 0 20px var(--color-viola-neon),
+        0 0 30px rgba(150, 17, 254, 0.8),
+        0 0 40px rgba(150, 17, 254, 0.5);
+}
+
+.melking-title a {
+    text-decoration: none;
+    color: var(--color-testo-nav); /* Mantenuto nero, ma l'ombra lo fa sembrare viola */
+    /* La scritta MELKING deve risaltare sul nero dell'header, quindi la mettiamo bianca con ombra viola */
+    color: var(--color-testo-nav); 
+}
+
+
+/* --- MEDIA QUERY per Mobile --- */
+@media (max-width: 992px) {
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .nav-segment {
+        justify-content: center;
+        margin: 5px 0;
+    }
+    
+    .nav-links {
+        justify-content: center;
+        margin: 5px 0;
+    }
+    
+    .logo {
+        order: -1; 
+        margin-bottom: 10px;
+    }
+    
+    .melking-title {
+        font-size: 8vw; 
+    }
+
+    .nav-links a {
+        font-size: 1em;
+    }
+    
+    .nav-left {
+        order: 1;
+    }
+    
+    .nav-right {
+        order: 2;
+    }
+}
