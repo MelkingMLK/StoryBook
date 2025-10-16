@@ -1,168 +1,291 @@
-body {
-    background: rgb(24,23,30);
-    color: rgb(212,210,218);
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-
-/* Effetto vetro (glassmorphism) */
-.navbar.glass {
-    background:
-        linear-gradient(135deg, rgba(24,23,30,0.75) 0%, rgba(50,50,62,0.85) 50%, rgba(24,23,30,0.75) 100%),
-        rgba(24,23,30, 0.6);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow:
-        0 0 10px 2px rgba(255, 255, 255, 0.2),
-        inset 0 0 15px 3px rgba(70, 70, 80, 0.6),
-        0 6px 24px rgba(0,0,0,0.5);
-    position: relative;
-    transition: background 0.3s ease;
-}
-
-/* Linea luminosa sottile e sfumata sotto navbar */
-.navbar.glass::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 15px;
-    right: 15px;
-    height: 4px;
-    background:
-        linear-gradient(90deg,
-            rgba(255, 255, 255, 0.8) 0%,
-            rgba(212,210,218, 0.4) 50%,
-            rgba(255, 255, 255, 0.8) 100%);
-    border-radius: 3px;
-    filter: blur(4px);
-    opacity: 0.7;
+    body {
+        background: rgb(212,210,218);
+        color: rgb(212,210,218);
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+main {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
     pointer-events: none;
 }
 
-.navbar {
-    display: flex;
-    align-items: center;
-    height: 160px;
-    padding: 0 3vw;
-    justify-content: space-between;
-    position: relative;
+main.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
-.nav-left, .nav-right {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    width: 300px; /* larghezza fissa identica */
-    justify-content: flex-start; /* nav-left */
-}
+    main::before {
+        content: "";
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width: 150px;
+        height: 150px;
+        background: url('../source/R1_NPL.svg') no-repeat center/contain;
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: 1;
+    }
 
-/* Override per nav-right */
-.nav-right {
-    justify-content: flex-end;
-}
-
-.logo {
-    margin: 0 auto;
-    flex-shrink: 0;
-    z-index: 10;
-    position: relative; /* Rimuove absolute */
-}
-
-.logo-img {
-    height: 140px;
-    width: auto;
-    display: block;
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.15));
-}
-.nav-links {
-    display: flex;
-    gap: 24px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-}
-
-.nav-left {
-    justify-content: flex-start;
-}
-
-.nav-right {
-    justify-content: flex-end;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: rgb(212,210,218);
-    font-weight: 600;
-    font-size: 1.2em;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-    padding: 8px 12px;
-    border-radius: 6px;
-}
-
-.nav-links a:hover,.nav-links a:focus {
-    color: rgb(255, 255, 255);
-    text-shadow: 0 0 8px rgb(212,210,218);
-    background: rgba(255, 255, 255, 0.1);
-    outline: none;
-}
-.nav-links li a {
-    white-space: nowrap;
-}
-
-.nav-links a.active {
-    color: rgb(255, 255, 255);
-    font-weight: 700;
-    text-shadow: 0 0 10px rgb(212,210,218);
-    background: rgba(0, 0, 0, 0.3);
-}
+    main::after {
+        content: "";
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 180px;
+        height: 180px;
+        background: url('../source/R1_NPL.svg') no-repeat center/contain;
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: 1;
+    }
 
 
+    /* Effetto vetro (glassmorphism) */
+    .navbar.glass {
+        background:
+            linear-gradient(135deg, rgba(24,23,30,0.75) 0%, rgba(50,50,62,0.85) 50%, rgba(24,23,30,0.75) 100%),
+            rgba(24,23,30, 0.6);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow:
+            0 0 10px 2px rgba(255, 255, 255, 0.2),
+            inset 0 0 15px 3px rgba(70, 70, 80, 0.6),
+            0 6px 24px rgba(0,0,0,0.5);
+        position: relative;
+        transition: background 0.3s ease;
+    }
 
-.nav-links a {
-    text-decoration: none;
-    color: rgb(212,210,218);
-    font-weight: 600;
-    font-size: 1.2em;
-    transition: color 0.3s ease;
-}
+    /* Linea luminosa sottile e sfumata sotto navbar */
+    .navbar.glass::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 15px;
+        right: 15px;
+        height: 4px;
+        background:
+            linear-gradient(90deg,
+                rgba(255, 255, 255, 0.8) 0%,
+                rgba(212,210,218, 0.4) 50%,
+                rgba(255, 255, 255, 0.8) 100%);
+        border-radius: 3px;
+        filter: blur(4px);
+        opacity: 0.7;
+        pointer-events: none;
+    }
 
-main {
-    margin-top: 160px; /* spazio per il logo in navbar */
-    background-color: rgb(212,210,218);
-    min-height: 100vh;
-    padding: 20px 0;
-}
-
-.main-section {
-    margin: 20px auto;
-    padding: 36px;
-    max-width: 900px;
-    background: rgba(19,18,22,0.85);
-    border-radius: 14px;
-    box-shadow: 0 6px 32px rgba(0,0,0, 0.4);
-    font-size: 2em;
-    text-align: center;
-    letter-spacing: 2px;
-    color: rgb(212,210,218);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-}
-
-@media screen and (max-width: 700px) {
     .navbar {
-        flex-direction: column;
-        height: auto;
+        display: flex;
+        align-items: center;
+        height: 160px;
+        padding: 0 3vw;
+        justify-content: space-between;
+        position: relative;
     }
+
+    .nav-left, .nav-right {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        width: 300px; /* larghezza fissa identica */
+        justify-content: flex-start; /* nav-left */
+    }
+
+    /* Override per nav-right */
+    .nav-right {
+        justify-content: flex-end;
+    }
+
+    .logo {
+        margin: 0 auto;
+        flex-shrink: 0;
+        z-index: 10;
+        position: relative; /* Rimuove absolute */
+    }
+
     .logo-img {
-        height: 80px;
+        height: 140px;
+        width: auto;
+        display: block;
+        filter: drop-shadow(0 0 10px rgba(255,255,255,0.15));
     }
-    .main-section {
+    .nav-links {
+        display: flex;
+        gap: 24px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        align-items: center;
+    }
+
+    .nav-left {
+        justify-content: flex-start;
+    }
+
+    .nav-right {
+        justify-content: flex-end;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: rgb(212,210,218);
+        font-weight: 600;
         font-size: 1.2em;
-        padding: 20px;
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+        padding: 8px 12px;
+        border-radius: 6px;
     }
+
+    .nav-links a:hover,.nav-links a:focus {
+        color: rgb(255, 255, 255);
+        text-shadow: 0 0 8px rgb(212,210,218);
+        background: rgba(255, 255, 255, 0.1);
+        outline: none;
+    }
+    .nav-links li a {
+        white-space: nowrap;
+    }
+
+    .nav-links a.active {
+        color: rgb(255, 255, 255);
+        font-weight: 700;
+        text-shadow: 0 0 10px rgb(212,210,218);
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+
+
+    .nav-links a {
+        text-decoration: none;
+        color: rgb(212,210,218);
+        font-weight: 600;
+        font-size: 1.2em;
+        transition: color 0.3s ease;
+    }
+
+    /* Animazione glow già presente */
+    @keyframes glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(212,210,218, 0.3); }
+        50% { box-shadow: 0 0 40px rgba(255,255,255, 0.5); }
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 700px) {
+        .main-section {
+            margin: 20px 15px;
+            padding: 20px 15px;
+            font-size: 1.2em;
+        }
+    }
+
+    /*--SECTIONS--*/
+.intro-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(212,210,218);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    
+    color: rgb(24, 23, 30);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    text-align: center;
+
+    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.5s ease;
 }
+.intro-section.slide-up {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+.intro-section h1 {
+  font-size: 3.2em;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 0.4em;
+  font-family: 'Montserrat', sans-serif; /* mantiene coerenza Montserrat */
+}
+
+.intro-section .subtitle {
+  font-size: 1.2em;
+  font-style: italic;
+  font-family: 'Lucida Calligraphy', 'Brush Script MT', cursive; /* font corsivo decorativo invitante */
+  color: rgb(50, 50, 50);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+
+    /* Stile base del div */
+    .main-section {
+        position: relative;
+        overflow: hidden;
+        max-width: 900px;
+        margin: 40px auto;
+        width: auto;
+        padding: 30px 25px;
+        border-radius: 12px;
+        border: 2px solid rgba(0, 0, 0, 0.6);
+        background:
+            linear-gradient(135deg, rgba(24,23,30,0.75) 0%, rgba(50,50,62,0.85) 50%, rgba(24,23,30,0.75) 100%),
+            rgba(24,23,30, 0.6);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        color: white;
+        box-shadow:
+            0 0 8px rgba(0, 0, 0, 0.5),
+            inset 0 0 10px 2px rgba(50, 50, 50, 0.4);
+        text-shadow:
+            0 0 10px rgba(255,255,255,0.8);
+        overflow: hidden;
+    }
+
+
+    /* Testo e contenuto sopra */
+    .main-section > * {
+        position: relative;
+        z-index: 1;
+    }
+
+
+    /* Animazione al passaggio del mouse */
+    .main-section:hover {
+        box-shadow:
+            0 0 20px rgba(0, 0, 0, 0.9),
+            inset 0 0 20px 6px rgba(40, 40, 40, 0.7);
+        transform: scale(1.05); /* aumento leggero di scala */
+    }
+
+    /* Animazione testo neon al hover */
+    .main-section h2 {
+        font-weight: 700;
+        font-size: 2em;
+        color: white;
+        margin-bottom: 20px;
+        text-align: center;
+        text-shadow:
+            0 0 10px rgba(255, 255, 255, 0.8),
+            0 0 20px rgba(255, 255, 255, 0.6);
+        transition: text-shadow 0.4s ease;
+    }
+
+    .main-section:hover h2 {
+        text-shadow:
+            0 0 20px rgba(255, 255, 255, 1),
+            0 0 40px rgba(255, 255, 255, 0.9);
+    }
