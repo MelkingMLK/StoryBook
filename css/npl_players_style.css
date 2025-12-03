@@ -1,0 +1,244 @@
+/* Stili globali e reset */
+body {
+    background: rgb(212, 210, 218); /* Scuro per contrasto */
+    color: rgb(212, 210, 218);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden; /* Evita scroll orizzontale */
+}
+
+.navbar.glass {
+    background:
+        linear-gradient(135deg, rgba(24,23,30,0.75) 0%, rgba(50,50,62,0.85) 50%, rgba(24,23,30,0.75) 100%),
+        rgba(24,23,30, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow:
+        0 0 10px 2px rgba(255, 255, 255, 0.2),
+        inset 0 0 15px 3px rgba(70, 70, 80, 0.6),
+        0 6px 24px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 100; /* Assicura che la navbar sia sempre sopra */
+}
+
+/* Linea luminosa sottile e sfumata sotto navbar */
+.navbar.glass::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    height: 4px;
+    background:
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.8) 0%,
+            rgba(212,210,218, 0.4) 50%,
+            rgba(255, 255, 255, 0.8) 100%);
+    border-radius: 3px;
+    filter: blur(4px);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    height: 160px;
+    padding: 0 3vw;
+    justify-content: center; /* Centra solo il logo */
+    position: relative;
+}
+
+.logo {
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.logo-img {
+    height: 140px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.15));
+}
+
+
+/* MAIN CONTENT SECTION */
+main {
+    display: block;
+    width: 100%;
+    min-height: calc(100vh - 160px); /* Altezza meno l'header */
+    padding-top: 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    /* Manteniamo le classi per una potenziale transizione futura */
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Rovi di rosa modificati */
+main::before {
+    content: "";
+    position: absolute; /* Usiamo absolute per posizionarli rispetto a main */
+    top: 0; /* Partono da subito sotto l'header */
+    left: -100px; /* Spostati più a sinistra per coprire il bordo */
+    width: 300px; /* Larghezza del pattern */
+    height: 100%; /* Copre tutta l'altezza del main */
+    background: url('../../source/R4_NPL.svg') no-repeat left center; /* Allineamento e no-repeat */
+    background-size: 200px auto; /* Dimensioni del singolo rovo, auto per mantenere proporzioni */
+    opacity: 0.1; /* Trasparenza */
+    pointer-events: none;
+    z-index: 1;
+    transform: rotate(0deg); /* Nessuna rotazione */
+    background-repeat: repeat-y; /* Ripeti verticalmente */
+    transform-origin: top left;
+}
+
+main::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    background: url('../source/R4_NPL.svg') no-repeat right center;
+    background-size: 200px auto;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 1;
+    transform: rotate(0deg) scaleX(-1); /* Specchia orizzontalmente per l'altro lato */
+    background-repeat: repeat-y;
+    transform-origin: top right;
+}
+
+
+.fifa-card-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 160px - 40px); /* Altezza di main meno padding/margin */
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    perspective: 1000px;
+    z-index: 3;
+}
+
+.fifa-card-image {
+    width: 300px; /* Dimensione della carta, puoi aggiustare */
+    height: auto;
+    cursor: pointer;
+    /* Aggiungo le proprietà di transizione necessarie: */
+    transition: transform 0.4s ease-out, filter 0.4s ease-out; 
+
+    /* Uso la NUOVA animazione laterale */
+    animation: card-sway 5s ease-in-out infinite alternate; 
+
+    will-change: transform; 
+    /* Ombra iniziale: crea profondità senza bordo */
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5)); 
+}
+
+.fifa-card-image:hover {
+    transform: translateY(-20px) scale(1.08) rotateX(5deg); 
+
+    /* Ombra più pronunciata per simulare l'ombra quando è sollevata */
+    filter: drop-shadow(0 30px 40px rgba(212, 210, 218, 0.6));
+
+    /* Ferma l'oscillazione quando il mouse è sopra per stabilità */
+    animation-play-state: paused; 
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px; /* Spazio tra le carte */
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 160px - 40px);
+    padding: 40px 20px;
+}
+
+/* Aggiorna il wrapper per la singola carta, non deve più gestire l'altezza da solo */
+.fifa-card-wrapper {
+    position: relative;
+    perspective: 1000px;
+    z-index: 3;
+}
+
+@keyframes card-sway {
+    0% { transform: rotateY(-3deg); }
+    50% { transform: rotateY(3deg); }
+    100% { transform: rotateY(-3deg); }
+}
+
+/* Stili per il Modal (Dialog) */
+.modal {
+    display: none; /* <-- CORRETTO: Nascosto di default */
+    position: fixed; 
+    z-index: 200; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.8); 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    /* display: flex; <-- RIMOSSO DA QUI */
+    
+    /* Queste proprietà verranno usate quando JS imposta display: flex */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background:
+        linear-gradient(135deg, rgba(30, 30, 40, 0.9) 0%, rgba(60, 60, 75, 0.95) 100%);
+    margin: auto;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(212,210,218, 0.3);
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(212,210,218, 0.7);
+}
+
+.modal-content p {
+    color: rgb(212, 210, 218);
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.close-button {
+    color: rgb(212, 210, 218);
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: white;
+    text-decoration: none;
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

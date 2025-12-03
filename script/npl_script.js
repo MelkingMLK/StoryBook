@@ -72,6 +72,7 @@ window.addEventListener('scroll', () => {
 });
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
     if (window.scrollY > 0) {
         introHidden = true;

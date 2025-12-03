@@ -12,8 +12,8 @@
         <nav class="navbar">
             <div class="nav-left nav-segment">
                 <ul class="nav-links">
-                    <li><a href="./HTML/index_npl.html">CAREER</a></li>
-                    <li><a href="pagina2.html">WAVE</a></li>
+                    <li><a href="./HTML/index_npl.php">CAREER</a></li>
+                    <li><a href="pagina2.php">WAVE</a></li>
                 </ul>
             </div>
             
@@ -23,8 +23,8 @@
             
             <div class="nav-right nav-segment">
                 <ul class="nav-links">
-                    <li><a href="pagina3.html">AESTHETIC</a></li>
-                    <li><a href="pagina4.html">FUTURE</a></li>
+                    <li><a href="pagina3.php">AESTHETIC</a></li>
+                    <li><a href="pagina4.php">FUTURE</a></li>
                 </ul>
             </div>
         </nav>

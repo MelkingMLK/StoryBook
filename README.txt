@@ -9,3 +9,4 @@ NB: usa notion come riferimento e fai in inglese logo
 
 
 
+rovi, caricamento delle info

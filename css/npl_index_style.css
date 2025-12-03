@@ -65,7 +65,7 @@ main.hidden {
 }
 
 main.slide-back-up {
-  animation: slideBackUp 0.s ease forwards;
+    animation: slideBackUp 0.7s ease forwards;
 }
 
     /* Effetto vetro (glassmorphism) */

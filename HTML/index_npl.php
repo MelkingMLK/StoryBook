@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEO PRODIGY LEAGUE</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/npl_style.css" />
+    <link rel="stylesheet" href="../css/npl_index_style.css" />
 </head>
 <body>
  <header>
@@ -42,21 +42,29 @@
   </p>
 </div>
    <main>
-    <div id="players" class="main-section" data-href="./NPL/players.html">
+    <div id="players" class="main-section" data-href="./NPL/players.php">
         <h2>Players</h2>
         </div>
 
-    <div id="statistics" class="main-section" data-href="./NPL/statistics.html">
+    <div id="statistics" class="main-section" data-href="./NPL/statistics.php">
         <h2>Statistics</h2>
     </div>
 
-    <div id="formation" class="main-section" data-href="./NPL/formation.html">
+    <div id="formation" class="main-section" data-href="./NPL/formation.php">
         <h2>Formation</h2>
     </div>
 
-    <div id="match" class="main-section" data-href="./NPL/match.html">
+    <div id="match" class="main-section" data-href="./NPL/match.php">
         <h2>Match</h2>
     </div>
+      <div id="calendar" class="main-section" data-href="./NPL/calendar.php">
+        <h2>Calendar</h2>
+    </div>
+      <div id="match" class="main-section" data-href="./NPL/match.php">
+        <h2>Match</h2>
+    </div>
+      <div id="scoreboard" class="main-section" data-href="./NPL/scoreboard.php">
+        <h2>Score Board</h2>
     </main>
 <script src="../script/npl_script.js"></script>
 </body>
