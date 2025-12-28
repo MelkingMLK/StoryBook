@@ -1,0 +1,64 @@
+/* =========================================
+   CHEF THEME: Colori, Font, Decorazioni
+   ========================================= */
+
+/* Importiamo font che ricordano lo stile (Un sans geometrico e un gotico opzionale) */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=UnifrakturMaguntia&display=swap');
+
+:root {
+    /* COLORI */
+    --chef-bg: #f2f0e9;        /* Quel bianco "carta" / grigio caldo */
+    --chef-text: #1a1a1a;      /* Nero quasi assoluto ma morbido */
+    --chef-accent: #ff331f;    /* Rosso acceso (Brighter Red) */
+    --chef-line: #000000;      /* Colore delle linee tremolanti */
+    
+    /* FONT */
+    --font-main: 'Syne', sans-serif;       /* Per titoli e testi moderni */
+    --font-gothic: 'UnifrakturMaguntia', cursive; /* Per dettagli stile "Melking" */
+}
+
+body {
+    background-color: var(--chef-bg);
+    color: var(--chef-text);
+    font-family: var(--font-main);
+    /* Texture carta opzionale di sottofondo (rumore leggero) */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* --- TITOLI ROSSI --- */
+h1, h2, h3 {
+    text-transform: uppercase;
+    font-weight: 800;
+    margin: 0;
+    line-height: 0.9;
+}
+
+.title-red {
+    color: var(--chef-accent);
+    letter-spacing: -1px;
+}
+
+.title-gothic {
+    font-family: var(--font-gothic);
+    color: var(--chef-text);
+    font-size: 1.2em; /* Leggermente più grande per bilanciare */
+}
+
+/* --- LE LINEE TREMOLANTI (Decorazioni) --- */
+/* Queste classi verranno applicate a div vuoti o SVG per creare il disegno */
+.doodle-line {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    fill: none;
+    stroke: var(--chef-line);
+    stroke-width: 2;
+    stroke-linecap: round;
+    /* Animazione leggera per farle sembrare vive */
+    animation: tremble 5s infinite ease-in-out alternate;
+}
+
+@keyframes tremble {
+    0% { transform: scale(1) rotate(0deg); }
+    100% { transform: scale(1.02) rotate(1deg); }
+}

@@ -1,0 +1,94 @@
+/* =========================================
+   CHEF LAYOUT: Griglie, Spazi, Posizioni
+   ========================================= */
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER DI NAVIGAZIONE (Minimal) */
+.chef-nav {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--chef-text);
+    background: transparent;
+    z-index: 100;
+}
+
+.chef-nav a {
+    text-decoration: none;
+    color: var(--chef-text);
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+/* CONTENITORE PRINCIPALE */
+main {
+    flex: 1;
+    padding: 40px;
+    position: relative; /* Per posizionare le linee assolute */
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* HEADER DELLA PAGINA (Titolo Gigante) */
+.page-header {
+    margin-bottom: 80px;
+    position: relative;
+    z-index: 10;
+}
+
+.big-title {
+    font-size: 6vw; /* Molto grande */
+    max-width: 800px;
+}
+
+/* GRIGLIA ENCICLOPEDIA (Cards) */
+.encyclopedia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+/* STILE CARTE (Blocchi) */
+.category-card {
+    border: 2px solid var(--chef-text);
+    padding: 30px;
+    background: var(--chef-bg); /* Copre le linee che passano sotto */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 8px 8px 0px var(--chef-text);
+    border-color: var(--chef-accent);
+}
+
+.category-card h3 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.category-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* UTILS */
+.spacer { height: 50px; }
